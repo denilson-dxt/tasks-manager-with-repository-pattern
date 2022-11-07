@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ using TasksWithRepositoryPattern.Services;
 
 namespace TasksWithRepositoryPattern.Controllers;
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class TaskController: ControllerBase
 {
