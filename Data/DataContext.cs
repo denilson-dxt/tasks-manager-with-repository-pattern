@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TasksWithRepositoryPattern.Models;
 
 namespace TasksWithRepositoryPattern.Data;
-public class DataContext: DbContext
+public class DataContext: IdentityDbContext<User>
 {
     private IConfiguration _configuration;
     public DataContext(DbContextOptions options, IConfiguration configuration):base(options)
