@@ -15,7 +15,9 @@ builder.Services.AddDbContext<DataContext>( options => {
 
 });
 
-builder.Services.AddIdentity<User, IdentityRole>(options=>{
+builder.Services.AddIdentity<User, IdentityRole>(options=>
+{
+    options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedAccount = true;
 }).AddEntityFrameworkStores<DataContext>();
 

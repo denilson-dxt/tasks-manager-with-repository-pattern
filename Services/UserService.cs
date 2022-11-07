@@ -52,6 +52,12 @@ public class UserService : IUserService
         return _generateToken(user);
     }
 
+    public async Task<User> GetAuthenticatedUser(string username)
+    {
+        var user = await _userManager.FindByNameAsync(username);
+        return user;
+    }
+
     private string _generateToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();

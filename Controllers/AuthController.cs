@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TasksWithRepositoryPattern.Models;
 using TasksWithRepositoryPattern.Data;
@@ -37,6 +38,13 @@ public class AuthController: ControllerBase
             return NotFound(e.Errors);
         }
     }
-    
+
+    [HttpGet("me")]
+    [Authorize]
+    public async Task<ActionResult<User>> GetLogedUserInfo()
+    {
+        return await _service.GetAuthenticatedUser(User.Identity.Name);
+    }
+
 
 }
